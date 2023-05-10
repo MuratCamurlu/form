@@ -41,6 +41,7 @@ export default {
   width: 80%;
   box-shadow: 1px 3px 3px 1px;
   padding: 10px;
+  border-radius: 10px;
 }
 form {
   display: flex;
