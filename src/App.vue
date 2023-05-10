@@ -19,6 +19,15 @@
           <input type="email" id="email" placeholder="Please enter a email" />
         </div>
         <div class="inputDiv">
+          <label for="country">Country</label>
+          <select name="country" id="country" class="select">
+            <option>France</option>
+            <option>Germany</option>
+            <option>England</option>
+          </select>
+        </div>
+
+        <div class="inputDiv">
           <label for="addressInput">Address</label>
           <textarea name="address" id="addressInput" rows="5" />
         </div>
@@ -72,6 +81,9 @@ input {
 .submitBtn:hover {
   color: white;
   background-color: navy;
+}
+.select {
+  padding: 5px;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
