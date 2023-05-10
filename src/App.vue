@@ -31,6 +31,40 @@
           <label for="addressInput">Address</label>
           <textarea name="address" id="addressInput" rows="5" />
         </div>
+        <div class="inputDiv">
+          <h4>Hobbies</h4>
+          <div class="checkboxDiv">
+            <div>
+              <label for="checkbox1">Football</label>
+              <input type="checkbox" id="checkbox1" name="checkbox1" />
+            </div>
+            <div>
+              <label for="checkbox2">Basketball</label>
+              <input type="checkbox" id="checkbox2" name="checkbox2" />
+            </div>
+            <div>
+              <label for="checkbox3">Volleyball</label>
+              <input type="checkbox" id="checkbox3" name="checkbox3" />
+            </div>
+          </div>
+        </div>
+        <div class="inputDiv">
+          <h4>Gender</h4>
+          <div class="checkboxDiv">
+            <div>
+              <label for="radio1">Male</label>
+              <input type="radio" id="radio1" name="radio" />
+            </div>
+            <div>
+              <label for="radio2">Female</label>
+              <input type="radio" id="radio2" name="radio" />
+            </div>
+            <div>
+              <label for="radio3">Other</label>
+              <input checked type="radio" id="radio3" name="radio" />
+            </div>
+          </div>
+        </div>
         <button type="submit" class="submitBtn">Submit</button>
       </form>
     </div>
@@ -84,6 +118,10 @@ input {
 }
 .select {
   padding: 5px;
+}
+.checkboxDiv {
+  display: flex;
+  justify-content: space-around;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
