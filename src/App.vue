@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="wrapper">
-      <form>
+      <form class="myForm">
         <div class="inputDiv">
           <label for="nameInput">Name</label>
           <input type="text" id="nameInput" placeholder="Please enter a name" />
@@ -18,6 +18,11 @@
           <label for="email">Email</label>
           <input type="email" id="email" placeholder="Please enter a email" />
         </div>
+        <div class="inputDiv">
+          <label for="addressInput">Address</label>
+          <textarea name="address" id="addressInput" rows="5" />
+        </div>
+        <button type="submit" class="submitBtn">Submit</button>
       </form>
     </div>
   </div>
@@ -31,6 +36,9 @@ export default {
 </script>
 
 <style>
+input {
+  padding: 5px;
+}
 .main {
   width: 100%;
   margin-top: 2rem;
@@ -43,7 +51,7 @@ export default {
   padding: 10px;
   border-radius: 10px;
 }
-form {
+.myForm {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -53,7 +61,18 @@ form {
   flex-direction: column;
   gap: 5px;
 }
-
+.submitBtn {
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  color: white;
+  background-color: blue;
+  cursor: pointer;
+}
+.submitBtn:hover {
+  color: white;
+  background-color: navy;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
