@@ -65,6 +65,16 @@
             </div>
           </div>
         </div>
+        <div>
+          <input type="file" hidden ref="myFileInput" @change="onFileChange" />
+          <button
+            class="fileBtn"
+            type="button"
+            @click="$refs.myFileInput.click()"
+          >
+            Select File
+          </button>
+        </div>
         <button type="submit" class="submitBtn">Submit</button>
       </form>
     </div>
@@ -74,6 +84,11 @@
 <script>
 export default {
   name: "App",
+  methods: {
+    onFileChange(e) {
+      console.log(e);
+    },
+  },
   components: {},
 };
 </script>
@@ -122,6 +137,17 @@ input {
 .checkboxDiv {
   display: flex;
   justify-content: space-around;
+}
+.fileBtn {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+.fileBtn:active {
+  transform: scale(0.95);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
