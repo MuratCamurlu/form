@@ -49,22 +49,25 @@
 
         <div class="inputDiv">
           <label for="addressInput">Address</label>
-          <textarea name="address" id="addressInput" rows="5" />
+          <textarea
+            v-model="user.address"
+            name="address"
+            id="addressInput"
+            rows="5"
+          />
         </div>
         <div class="inputDiv">
           <h4>Hobbies</h4>
           <div class="checkboxDiv">
-            <div>
-              <label for="checkbox1">Football</label>
-              <input type="checkbox" id="checkbox1" name="checkbox1" />
-            </div>
-            <div>
-              <label for="checkbox2">Basketball</label>
-              <input type="checkbox" id="checkbox2" name="checkbox2" />
-            </div>
-            <div>
-              <label for="checkbox3">Volleyball</label>
-              <input type="checkbox" id="checkbox3" name="checkbox3" />
+            <div v-for="item in hobbies" :key="item.id">
+              <label for="checkbox1">{{ item.name }}</label>
+              <input
+                type="checkbox"
+                id="checkbox1"
+                name="checkbox1"
+                :value="item.id"
+                v-model="user.hobbies"
+              />
             </div>
           </div>
         </div>
@@ -110,6 +113,11 @@ export default {
   name: "App",
   data() {
     return {
+      hobbies: [
+        { id: 1, name: "Football" },
+        { id: 2, name: "Basketball" },
+        { id: 3, name: "Volleyball" },
+      ],
       countries: [
         { id: 1, name: "England" },
         { id: 2, name: "Germany" },
@@ -120,6 +128,8 @@ export default {
         surname: "",
         email: "",
         country: 1,
+        address: "",
+        hobbies: [],
       },
     };
   },
