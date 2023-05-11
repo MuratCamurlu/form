@@ -31,10 +31,19 @@
         </div>
         <div class="inputDiv">
           <label for="country">Country</label>
-          <select name="country" id="country" class="select">
-            <option>France</option>
-            <option>Germany</option>
-            <option>England</option>
+          <select
+            v-model="user.country"
+            name="country"
+            id="country"
+            class="selected"
+          >
+            <option
+              v-for="item in getCountries"
+              :key="item.id"
+              :value="item.id"
+            >
+              {{ item.name }}
+            </option>
           </select>
         </div>
 
@@ -91,6 +100,7 @@
     </div>
     <div class="wrapper">
       <p>User Info: {{ user }}</p>
+      <p>{{ getCountryNameById(user.country) }}</p>
     </div>
   </div>
 </template>
@@ -100,16 +110,30 @@ export default {
   name: "App",
   data() {
     return {
+      countries: [
+        { id: 1, name: "England" },
+        { id: 2, name: "Germany" },
+        { id: 3, name: "France" },
+      ],
       user: {
         name: "",
         surname: "",
         email: "",
+        country: 1,
       },
     };
   },
   methods: {
     onFileChange(e) {
       console.log(e);
+    },
+    getCountryNameById(id) {
+      return this.getCountries.find((item) => item.id === id).name;
+    },
+  },
+  computed: {
+    getCountries() {
+      return this.countries;
     },
   },
   components: {},
