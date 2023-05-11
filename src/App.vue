@@ -4,11 +4,17 @@
       <form class="myForm">
         <div class="inputDiv">
           <label for="nameInput">Name</label>
-          <input type="text" id="nameInput" placeholder="Please enter a name" />
+          <input
+            v-model="user.name"
+            type="text"
+            id="nameInput"
+            placeholder="Please enter a name"
+          />
         </div>
         <div class="inputDiv">
           <label for="surnameInput">Surname</label>
           <input
+            v-model="user.surname"
             type="text"
             id="surnameInput"
             placeholder="Please enter a surname"
@@ -16,7 +22,12 @@
         </div>
         <div class="inputDiv">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Please enter a email" />
+          <input
+            v-model="user.email"
+            type="email"
+            id="email"
+            placeholder="Please enter a email"
+          />
         </div>
         <div class="inputDiv">
           <label for="country">Country</label>
@@ -78,12 +89,24 @@
         <button type="submit" class="submitBtn">Submit</button>
       </form>
     </div>
+    <div class="wrapper">
+      <p>User Info: {{ user }}</p>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      user: {
+        name: "",
+        surname: "",
+        email: "",
+      },
+    };
+  },
   methods: {
     onFileChange(e) {
       console.log(e);
@@ -102,9 +125,10 @@ input {
   margin-top: 2rem;
   display: flex;
   justify-content: center;
+  gap: 10px;
 }
 .wrapper {
-  width: 80%;
+  width: 50%;
   box-shadow: 1px 3px 3px 1px;
   padding: 10px;
   border-radius: 10px;
