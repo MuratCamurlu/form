@@ -74,17 +74,15 @@
         <div class="inputDiv">
           <h4>Gender</h4>
           <div class="checkboxDiv">
-            <div>
-              <label for="radio1">Male</label>
-              <input type="radio" id="radio1" name="radio" />
-            </div>
-            <div>
-              <label for="radio2">Female</label>
-              <input type="radio" id="radio2" name="radio" />
-            </div>
-            <div>
-              <label for="radio3">Other</label>
-              <input checked type="radio" id="radio3" name="radio" />
+            <div v-for="item in gender" :key="item.id">
+              <label :for="item.name">{{ item.name }}</label>
+              <input
+                :value="item.id"
+                type="radio"
+                :id="item.name"
+                name="radio"
+                v-model="user.gender"
+              />
             </div>
           </div>
         </div>
@@ -95,8 +93,9 @@
             type="button"
             @click="$refs.myFileInput.click()"
           >
-            Select File
+            {{ file?.name ? "Change File" : "Select File" }}
           </button>
+          <span v-if="file?.name">{{ file.name }}</span>
         </div>
         <button type="submit" class="submitBtn">Submit</button>
       </form>
@@ -113,6 +112,12 @@ export default {
   name: "App",
   data() {
     return {
+      file: {},
+      gender: [
+        { id: 1, name: "Male" },
+        { id: 2, name: "Female" },
+        { id: 3, name: "Other" },
+      ],
       hobbies: [
         { id: 1, name: "Football" },
         { id: 2, name: "Basketball" },
@@ -130,12 +135,20 @@ export default {
         country: 1,
         address: "",
         hobbies: [],
+        gender: 3,
+        file: "",
       },
     };
   },
   methods: {
     onFileChange(e) {
-      console.log(e);
+      console.log(e.target.files);
+      this.file = { name: e.target.files[0].name };
+      this.user.file = {
+        name: e.target.files[0].name,
+        size: e.target.files[0].size,
+        type: e.target.files[0].type,
+      };
     },
     getCountryNameById(id) {
       return this.getCountries.find((item) => item.id === id).name;
