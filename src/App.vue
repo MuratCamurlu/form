@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="wrapper">
-      <form class="myForm">
+      <form @submit.prevent="submitForm" class="myForm">
         <div class="inputDiv">
           <label for="nameInput">Name</label>
           <input
@@ -141,6 +141,20 @@ export default {
     };
   },
   methods: {
+    submitForm() {
+      console.log("Form gitti");
+      this.user = {
+        name: "",
+        surname: "",
+        email: "",
+        country: 1,
+        address: "",
+        hobbies: [],
+        gender: 3,
+        file: "",
+      };
+      this.file = {};
+    },
     onFileChange(e) {
       console.log(e.target.files);
       this.file = { name: e.target.files[0].name };
