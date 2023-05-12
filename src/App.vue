@@ -5,6 +5,7 @@
         <div class="inputDiv">
           <label for="nameInput">Name</label>
           <input
+            :class="userValidations.name ? 'isError' : ''"
             v-model="user.name"
             type="text"
             id="nameInput"
@@ -14,6 +15,7 @@
         <div class="inputDiv">
           <label for="surnameInput">Surname</label>
           <input
+            :class="userValidations.surname ? 'isError' : ''"
             v-model="user.surname"
             type="text"
             id="surnameInput"
@@ -23,6 +25,7 @@
         <div class="inputDiv">
           <label for="email">Email</label>
           <input
+            :class="userValidations.email ? 'isError' : ''"
             v-model="user.email"
             type="email"
             id="email"
@@ -117,6 +120,11 @@ export default {
   name: "App",
   data() {
     return {
+      userValidations: {
+        name: false,
+        surname: false,
+        email: false,
+      },
       file: {},
       gender: [
         { id: 1, name: "Male" },
@@ -147,20 +155,34 @@ export default {
     };
   },
   methods: {
-    submitForm() {
-      console.log("Form gitti");
-      this.user = {
-        name: "",
-        surname: "",
-        email: "",
-        country: 1,
-        address: "",
-        hobbies: [],
-        gender: 3,
-        file: "",
-        isAccept: true,
+    validateData() {
+      const obj = {
+        name: this.user.name.trim() === "",
+        surname: this.user.surname.trim() === "",
+        email: this.user.email.trim() === "",
       };
-      this.file = {};
+      console.log(obj);
+      return obj;
+    },
+    submitForm() {
+      const validationResult = this.validateData();
+      this.userValidations = validationResult;
+      if (Object.values(validationResult).includes(true)) {
+        alert("Form is invalid!!!");
+      } else {
+        this.user = {
+          name: "",
+          surname: "",
+          email: "",
+          country: 1,
+          address: "",
+          hobbies: [],
+          gender: 3,
+          file: "",
+          isAccept: true,
+        };
+        this.file = {};
+      }
     },
     onFileChange(e) {
       console.log(e.target.files);
@@ -186,7 +208,7 @@ export default {
 
 <style>
 .isError {
-  color: red !important;
+  border-color: red !important;
 }
 input {
   padding: 5px;
