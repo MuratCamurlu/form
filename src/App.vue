@@ -97,6 +97,9 @@
           </button>
           <span v-if="file?.name">{{ file.name }}</span>
         </div>
+        <div>
+          <IsAccept v-model="user.isAccept" />
+        </div>
         <button type="submit" class="submitBtn">Submit</button>
       </form>
     </div>
@@ -108,6 +111,8 @@
 </template>
 
 <script>
+import IsAccept from "./components/isAccept.vue";
+
 export default {
   name: "App",
   data() {
@@ -137,6 +142,7 @@ export default {
         hobbies: [],
         gender: 3,
         file: "",
+        isAccept: true,
       },
     };
   },
@@ -152,6 +158,7 @@ export default {
         hobbies: [],
         gender: 3,
         file: "",
+        isAccept: true,
       };
       this.file = {};
     },
@@ -173,11 +180,14 @@ export default {
       return this.countries;
     },
   },
-  components: {},
+  components: { IsAccept },
 };
 </script>
 
 <style>
+.isError {
+  color: red !important;
+}
 input {
   padding: 5px;
 }
