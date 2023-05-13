@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="wrapper">
+    <!-- <div class="wrapper">
       <form @submit.prevent="submitForm" class="myForm">
         <div class="inputDiv">
           <label for="nameInput">Name</label>
@@ -109,13 +109,14 @@
     <div class="wrapper">
       <p>User Info: {{ user }}</p>
       <p>{{ getCountryNameById(user.country) }}</p>
-    </div>
+    </div> -->
+    <DynamicInput />
   </div>
 </template>
 
 <script>
-import IsAccept from "./components/isAccept.vue";
-
+// import IsAccept from "./components/isAccept.vue";
+import DynamicInput from "./components/DynamicInput.vue";
 export default {
   name: "App",
   data() {
@@ -202,7 +203,7 @@ export default {
       return this.countries;
     },
   },
-  components: { IsAccept },
+  components: { DynamicInput },
 };
 </script>
 
